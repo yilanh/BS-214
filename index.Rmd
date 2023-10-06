@@ -1,0 +1,19 @@
+--- 
+title: "BIOSTAT 214"
+author: "Yilan Huang"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+# url: your book url like https://bookdown.org/yihui/bookdown
+# cover-image: path to the social sharing image like images/cover.jpg
+description: |
+  For BIOSTAT 214 (Finite Population Sampling) assignments.
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+---
+
+# About
+
+For BIOSTAT 214 (Finite Population Sampling) assignments.
+

@@ -1,0 +1,41 @@
+# HW1
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Show that the mean of sample means over all possible samples drawn from a finite population using SRSWOR is equal to the mean of the finite population.
+
+**Proof:**
+
+Let $N$ = number of units in the population, with the population mean
+$$
+\bar{Y} = \frac{1}{N} \sum_{i=1}^N y_i. 
+$$
+
+Let $n$ = size of a sample. When we draw the sample using SRSWOR, there are $N \choose n$ distinct samples. The number of samples of size $n$ that will contain a given unit in a population of size $N$ is 
+$$
+{N \choose n} \times \frac{n}{N} = {N-1 \choose n-1}.
+$$
+
+Let $S = \{s: s = \{i_1 < i_2 < ... < i_n\}, (i_1, ..., i_n) \subseteq (1, ..., N)\}$. We have $|S|$ = $N \choose n$.
+
+Let $\bar{y_s}$ = sample mean of $s \in S$. So,
+$$
+\bar{y_s} = \frac{1}{n} \sum_{i \in s} y_i.
+$$
+
+Then the mean of sample means over all possible samples is equal to
+\begin{align}
+\frac{1}{{N \choose n}} \sum_{s \in S} \bar{y_s} &= \frac{1}{{N \choose n}} \sum_{s \in S} (\frac{1}{n} \sum_{i \in s} y_i) \\
+&= \frac{1}{{N \choose n}} \frac{1}{n} \sum_{s \in S} \sum_{i \in s} y_i \\
+&= \frac{1}{{N \choose n}} \frac{1}{n} \sum_{s \in S} \sum_{s \ni i} y_i = (*) 
+\end{align} 
+
+Since for a given $i$, $y_i$ will appear in exactly ${N-1 \choose n-1}$ samples,
+\begin{align} 
+(*) &= \frac{{N-1 \choose n-1}}{n{N \choose n}} \sum_{i=1}^N y_i \\
+&= \frac{1}{N} \sum_{i=1}^N y_i = \bar{Y} 
+\end{align}
+which concludes the proof.
+

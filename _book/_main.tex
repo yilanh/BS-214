@@ -1,0 +1,137 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={BIOSTAT 214},
+  pdfauthor={Yilan Huang},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{BIOSTAT 214}
+\author{Yilan Huang}
+\date{2023-10-06}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{about}{%
+\chapter{About}\label{about}}
+
+For BIOSTAT 214 (Finite Population Sampling) assignments.
+
+\hypertarget{hw1}{%
+\chapter{HW1}\label{hw1}}
+
+Show that the mean of sample means over all possible samples drawn from a finite population using SRSWOR is equal to the mean of the finite population.
+
+\textbf{Proof:}
+
+Let \(N\) = number of units in the population, with the population mean
+\[
+\bar{Y} = \frac{1}{N} \sum_{i=1}^N y_i. 
+\]
+
+Let \(n\) = size of a sample. When we draw the sample using SRSWOR, there are \(N \choose n\) distinct samples. The number of samples of size \(n\) that will contain a given unit in a population of size \(N\) is
+\[
+{N \choose n} \times \frac{n}{N} = {N-1 \choose n-1}.
+\]
+
+Let \(S = \{s: s = \{i_1 < i_2 < ... < i_n\}, (i_1, ..., i_n) \subseteq (1, ..., N)\}\). We have \(|S|\) = \(N \choose n\).
+
+Let \(\bar{y_s}\) = sample mean of \(s \in S\). So,
+\[
+\bar{y_s} = \frac{1}{n} \sum_{i \in s} y_i.
+\]
+
+Then the mean of sample means over all possible samples is equal to
+\begin{align}
+\frac{1}{{N \choose n}} \sum_{s \in S} \bar{y_s} &= \frac{1}{{N \choose n}} \sum_{s \in S} (\frac{1}{n} \sum_{i \in s} y_i) \\
+&= \frac{1}{{N \choose n}} \frac{1}{n} \sum_{s \in S} \sum_{i \in s} y_i \\
+&= \frac{1}{{N \choose n}} \frac{1}{n} \sum_{s \in S} \sum_{s \ni i} y_i = (*) 
+\end{align}
+
+Since for a given \(i\), \(y_i\) will appear in exactly \({N-1 \choose n-1}\) samples,
+\begin{align} 
+(*) &= \frac{{N-1 \choose n-1}}{n{N \choose n}} \sum_{i=1}^N y_i \\
+&= \frac{1}{N} \sum_{i=1}^N y_i = \bar{Y} 
+\end{align}
+which concludes the proof.
+
+  \bibliography{book.bib,packages.bib}
+
+\end{document}

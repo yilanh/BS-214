@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 2 HW1 | BIOSTAT 214</title>
+  <meta name="description" content="For BIOSTAT 214 (Finite Population Sampling) assignments." />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 2 HW1 | BIOSTAT 214" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="For BIOSTAT 214 (Finite Population Sampling) assignments." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 2 HW1 | BIOSTAT 214" />
+  
+  <meta name="twitter:description" content="For BIOSTAT 214 (Finite Population Sampling) assignments." />
+  
+
+<meta name="author" content="Yilan Huang" />
+
+
+<meta name="date" content="2023-10-06" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">BIOSTAT 214 > Assignments</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a></li>
+<li class="chapter" data-level="2" data-path="hw1.html"><a href="hw1.html"><i class="fa fa-check"></i><b>2</b> HW1</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">BIOSTAT 214</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="hw1" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number"> 2</span> HW1<a href="hw1.html#hw1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Show that the mean of sample means over all possible samples drawn from a finite population using SRSWOR is equal to the mean of the finite population.</p>
+<p><strong>Proof:</strong></p>
+<p>Let <span class="math inline">\(N\)</span> = number of units in the population, with the population mean
+<span class="math display">\[
+\bar{Y} = \frac{1}{N} \sum_{i=1}^N y_i.
+\]</span></p>
+<p>Let <span class="math inline">\(n\)</span> = size of a sample. When we draw the sample using SRSWOR, there are <span class="math inline">\(N \choose n\)</span> distinct samples. The number of samples of size <span class="math inline">\(n\)</span> that will contain a given unit in a population of size <span class="math inline">\(N\)</span> is
+<span class="math display">\[
+{N \choose n} \times \frac{n}{N} = {N-1 \choose n-1}.
+\]</span></p>
+<p>Let <span class="math inline">\(S = \{s: s = \{i_1 &lt; i_2 &lt; ... &lt; i_n\}, (i_1, ..., i_n) \subseteq (1, ..., N)\}\)</span>. We have <span class="math inline">\(|S|\)</span> = <span class="math inline">\(N \choose n\)</span>.</p>
+<p>Let <span class="math inline">\(\bar{y_s}\)</span> = sample mean of <span class="math inline">\(s \in S\)</span>. So,
+<span class="math display">\[
+\bar{y_s} = \frac{1}{n} \sum_{i \in s} y_i.
+\]</span></p>
+<p>Then the mean of sample means over all possible samples is equal to
+<span class="math display">\[\begin{align}
+\frac{1}{{N \choose n}} \sum_{s \in S} \bar{y_s} &amp;= \frac{1}{{N \choose n}} \sum_{s \in S} (\frac{1}{n} \sum_{i \in s} y_i) \\
+&amp;= \frac{1}{{N \choose n}} \frac{1}{n} \sum_{s \in S} \sum_{i \in s} y_i \\
+&amp;= \frac{1}{{N \choose n}} \frac{1}{n} \sum_{s \in S} \sum_{s \ni i} y_i = (*)
+\end{align}\]</span></p>
+<p>Since for a given <span class="math inline">\(i\)</span>, <span class="math inline">\(y_i\)</span> will appear in exactly <span class="math inline">\({N-1 \choose n-1}\)</span> samples,
+<span class="math display">\[\begin{align}
+(*) &amp;= \frac{{N-1 \choose n-1}}{n{N \choose n}} \sum_{i=1}^N y_i \\
+&amp;= \frac{1}{N} \sum_{i=1}^N y_i = \bar{Y}
+\end{align}\]</span>
+which concludes the proof.</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-HW1.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
